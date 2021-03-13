@@ -9,6 +9,9 @@ class Base(models.Model):
         abstract = True
 
 
+class BaseFuncionarios(models.Model):
+    efetivado = models.BooleanField(default=False)
+    ativo = models.BooleanField(default=True)
 
 class Cardapio(Base):
     prato = models.CharField(max_length=50)
@@ -44,3 +47,18 @@ class Avalicacao(Base):
 
     def __str__(self):
         return f'{self.nome} avaliou o prato {self.prato} com a nota {self.avalicao}'
+
+
+
+class Funcionarios(BaseFuncionarios):
+    nome = models.CharField(max_length=200)
+    email = models.EmailField()
+    cargo = models.CharField(max_length=100)
+    contratacao = models.DateField(default=False)
+    class Meta:
+        verbose_name = 'Funcionario'
+        verbose_name_plural = 'Funcionarios'
+        ordering = ['id']
+
+    def __str__(self):
+        return self.nome

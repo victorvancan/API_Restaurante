@@ -2,8 +2,8 @@ from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Cardapio, Avalicacao
-from .serializers import CardapioSerializer, AvaliacaoSerializer
+from .models import Cardapio, Avalicacao, Funcionarios
+from .serializers import CardapioSerializer, AvaliacaoSerializer, FuncionarioSerializer
 from .permissons import EhSuperUser
 
 
@@ -35,3 +35,7 @@ class CardapioViewSet(viewsets.ModelViewSet):
 class AvaliacaoViewSet(viewsets.ModelViewSet):
     queryset = Avalicacao.objects.all()
     serializer_class = AvaliacaoSerializer
+
+class FuncionarioViewSet(viewsets.ModelViewSet):
+    queryset = Funcionarios.objects.all()
+    serializer_class = FuncionarioSerializer

@@ -1,6 +1,6 @@
 from  rest_framework import serializers
 from django.db.models import Avg
-from .models import Cardapio, Avalicacao
+from .models import Cardapio, Avalicacao, Funcionarios
 
 
 class CardapioSerializer(serializers.ModelSerializer):
@@ -48,3 +48,16 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
             if valor in range(1, 6):
                 return valor
             raise serializers.ValidationError('A avaliação precisa ser de 1 á 5')
+
+
+class FuncionarioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Funcionarios
+        fields = (
+            'id',
+            'nome',
+            'email',
+            'cargo',
+            'contratacao'
+        )
